@@ -407,6 +407,8 @@ footer b{color:var(--ink)}
       form.reset(); count.textContent = '0 / 500';
       statusEl.className = 'status ok';
       statusEl.textContent = "Thanks, I'll be in touch shortly.";
+      // LinkedIn conversion: contact request accepted (conversion ID 31972473)
+      if (window.lintrk) window.lintrk('track', { conversion_id: 31972473 });
     };
     const fail = msg => {
       statusEl.className = 'status bad';
@@ -461,5 +463,14 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
 <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=11118953&fmt=gif" />
 </noscript>
 <!-- END OF LINKEDIN INSIGHT TAG -->
+
+<!-- LinkedIn conversion: resume PDF download (conversion ID 31972465) -->
+<script>
+  document.querySelectorAll('a[href$="Elias_Elkoussa_Resume.pdf"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (window.lintrk) window.lintrk('track', { conversion_id: 31972465 });
+    });
+  });
+</script>
 </body>
 </html>
