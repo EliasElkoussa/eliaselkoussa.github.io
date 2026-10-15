@@ -76,6 +76,37 @@ h1{font:600 clamp(30px,6vw,42px)/1.12 var(--display);margin:0;text-wrap:balance}
 .fig{color:var(--figure);font-weight:600;font-variant-numeric:tabular-nums}
 .back{display:inline-flex;align-items:center;gap:5px;margin-left:10px;font:500 12.5px/1.2 var(--mono);white-space:nowrap}
 .back svg{width:12px;height:12px}
+/* actions: download + contact request */
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 16px;border-radius:10px;font:600 15px/1.2 var(--body);text-decoration:none;cursor:pointer;border:1px solid var(--accent);transition:background-color .15s ease,border-color .15s ease}
+.btn svg{width:16px;height:16px;flex:none}
+.btn-primary{background:var(--accent);color:var(--surface)}
+.btn-primary:hover{filter:brightness(1.08)}
+.btn-ghost{background:transparent;color:var(--accent)}
+.btn-ghost:hover{background:var(--accent-soft)}
+.btn[disabled]{opacity:.6;cursor:progress}
+
+.contact-sec .rbody{max-width:560px}
+.cform{display:flex;flex-direction:column;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-weight:600;font-size:15px}
+.field .opt{font-weight:400;color:var(--muted)}
+.field input,.field textarea{font:16px/1.4 var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:11px 12px;width:100%}
+.field textarea{min-height:110px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.field input[aria-invalid="true"],.field textarea[aria-invalid="true"]{border-color:#C2412D}
+.err{font-size:13.5px;color:#C2412D;min-height:0}
+.err:empty{display:none}
+.count{font:500 12.5px/1 var(--mono);color:var(--muted);align-self:flex-end}
+.hp{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+.privacy{font-size:13.5px;color:var(--muted);margin:0}
+.status{margin:0;padding:12px 14px;border-radius:10px;font-size:15px}
+.status:empty{display:none}
+.status.ok{background:var(--accent-soft);color:var(--ink)}
+.status.bad{background:#FBE9E6;color:#7A2618}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .status.bad{background:#3A1E1A;color:#F5C9C0} }
+:root[data-theme="dark"] .status.bad{background:#3A1E1A;color:#F5C9C0}
+
 footer{border-top:1px solid var(--line);padding-top:20px;color:var(--muted);font-size:15px;display:flex;flex-wrap:wrap;gap:6px 18px}
 footer b{color:var(--ink)}
 
@@ -97,6 +128,10 @@ footer b{color:var(--ink)}
     <span class="eyebrow">Elias Elkoussa · Dubai, UAE</span>
     <h1>Selected wins</h1>
     <p class="lead">Key results from 18 years in client leadership and paid media advertising consultancy across the UAE and GCC, on the platform side (X, formerly Twitter, and Criteo) and the agency side (Universal Media). Select one to see it in my resume below.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="Elias_Elkoussa_Resume.pdf" download="Elias_Elkoussa_Resume.pdf"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M3 13.5h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Download resume (PDF)</a>
+      <a class="btn btn-ghost" href="#contact">Request contact details</a>
+    </div>
   </header>
 
   <section class="stats" aria-label="Four wins">
@@ -138,6 +173,7 @@ footer b{color:var(--ink)}
       <ul class="contact">
         <li><span>Dubai, United Arab Emirates</span></li>
         <li><a href="https://www.linkedin.com/in/elias-elkoussa-06a59b196/" target="_blank" rel="noopener">linkedin.com/in/elias-elkoussa-06a59b196</a></li>
+        <li><a href="Elias_Elkoussa_Resume.pdf" download="Elias_Elkoussa_Resume.pdf">Download resume (PDF)</a></li>
       </ul>
     </header>
 
@@ -238,6 +274,44 @@ footer b{color:var(--ink)}
         <p>English: professional (read and write) · Arabic: native (read and write)</p>
       </div>
     </section>
+
+    <section class="rsec contact-sec" id="contact" aria-labelledby="h-contact">
+      <h2 id="h-contact">Request contact details</h2>
+      <div class="rbody">
+        <p>Leave your details and I'll reply personally with my contact information and resume.</p>
+        <form class="cform" id="cform" novalidate>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" maxlength="254" required aria-describedby="e-email">
+            <span class="err" id="e-email"></span>
+          </div>
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" maxlength="100" required aria-describedby="e-name">
+            <span class="err" id="e-name"></span>
+          </div>
+          <div class="field">
+            <label for="f-company">Company</label>
+            <input id="f-company" name="company" type="text" autocomplete="organization" maxlength="120" required aria-describedby="e-company">
+            <span class="err" id="e-company"></span>
+          </div>
+          <div class="field">
+            <label for="f-note">Note <span class="opt">(optional)</span></label>
+            <textarea id="f-note" name="note" maxlength="500" aria-describedby="c-note"></textarea>
+            <span class="count" id="c-note" aria-live="polite">0 / 500</span>
+          </div>
+          <div class="hp" aria-hidden="true">
+            <label for="f-website">Website</label>
+            <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="actions">
+            <button class="btn btn-primary" type="submit" id="f-send">Send request</button>
+          </div>
+          <p class="privacy">Your details are only used to reply to your request.</p>
+          <p class="status" id="f-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
   </section>
 
   <footer>
@@ -279,6 +353,85 @@ footer b{color:var(--ink)}
     const box = from || document.querySelector('a.stat');
     box.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'center' });
     box.focus({ preventScroll: true });
+  });
+
+  // ============================================================
+  // CONTACT REQUEST FORM
+  // Paste your Google Apps Script web app URL between the quotes
+  // below (it starts with https://script.google.com/macros/s/
+  // and ends with /exec).
+  // ============================================================
+  const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyLkouosSii1fpbyagpn_yeAFf9MB0t_xE3HCi3-BMQFIOIRdTXRm1mYKG0pFj20B6L/exec';
+
+  const form = document.getElementById('cform');
+  const statusEl = document.getElementById('f-status');
+  const send = document.getElementById('f-send');
+  const note = document.getElementById('f-note');
+  const count = document.getElementById('c-note');
+  note.addEventListener('input', () => { count.textContent = note.value.length + ' / 500'; });
+
+  const emailOk = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+  function setErr(id, msg) {
+    const input = document.getElementById('f-' + id);
+    document.getElementById('e-' + id).textContent = msg;
+    input.setAttribute('aria-invalid', msg ? 'true' : 'false');
+    return !msg;
+  }
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    statusEl.className = 'status'; statusEl.textContent = '';
+    const v = k => form.elements[k].value.trim();
+    const okEmail = setErr('email', !v('email') ? 'Please enter your email.' : (emailOk(v('email')) ? '' : 'Please enter a valid email address.'));
+    const okName = setErr('name', v('name') ? '' : 'Please enter your name.');
+    const okCompany = setErr('company', v('company') ? '' : 'Please enter your company.');
+    if (!(okEmail && okName && okCompany)) {
+      const first = form.querySelector('[aria-invalid="true"]');
+      if (first) first.focus();
+      return;
+    }
+    if (v('website')) return; // filled only by bots
+
+    if (!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(FORM_ENDPOINT)) {
+      statusEl.className = 'status bad';
+      statusEl.textContent = 'This form is not connected yet. Please reach me on LinkedIn instead.';
+      return;
+    }
+
+    send.disabled = true; send.textContent = 'Sending…';
+    const body = new URLSearchParams({
+      email: v('email'), name: v('name'), company: v('company'),
+      note: note.value.trim().slice(0, 500), website: v('website')
+    });
+    const done = () => {
+      form.reset(); count.textContent = '0 / 500';
+      statusEl.className = 'status ok';
+      statusEl.textContent = "Thanks, I'll be in touch shortly.";
+    };
+    const fail = msg => {
+      statusEl.className = 'status bad';
+      statusEl.textContent = msg || 'Sorry, that did not go through. Please try again, or reach me on LinkedIn.';
+    };
+    try {
+      let res = null;
+      try {
+        // Normal request: lets the page read whether the request was accepted.
+        const r = await fetch(FORM_ENDPOINT, { method: 'POST', body });
+        res = await r.json();
+      } catch (readErr) {
+        // If the browser blocks reading the reply, send without reading it.
+        // The script ignores a repeat from the same email, so this never notifies twice.
+        await fetch(FORM_ENDPOINT, { method: 'POST', mode: 'no-cors', body });
+      }
+      if (!res || res.ok) done();
+      else if (res.reason === 'missing') fail('Please check your name, company and email, then try again.');
+      else if (res.reason === 'busy') fail('The form is busy right now. Please try again later, or reach me on LinkedIn.');
+      else fail();
+    } catch (err) {
+      fail();
+    } finally {
+      send.disabled = false; send.textContent = 'Send request';
+    }
   });
 })();
 </script>
