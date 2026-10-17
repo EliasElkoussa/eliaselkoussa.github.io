@@ -88,6 +88,10 @@ h1{font:600 clamp(30px,6vw,42px)/1.12 var(--display);margin:0;text-wrap:balance}
 .btn[disabled]{opacity:.6;cursor:progress}
 
 .contact-sec .rbody{max-width:560px}
+.schedule-sec .rbody{max-width:none}
+.booking{width:100%;height:640px;border:0;border-radius:12px;background:var(--surface)}
+.booking-alt{font-size:14px;color:var(--muted);margin:0}
+@media (max-width:640px){ .booking{height:720px} }
 .cform{display:flex;flex-direction:column;gap:14px}
 .field{display:flex;flex-direction:column;gap:6px}
 .field label{font-weight:600;font-size:15px}
@@ -131,6 +135,7 @@ footer b{color:var(--ink)}
     <p class="lead">Key results from 18 years in client leadership and paid media advertising consultancy across the UAE and GCC, on the platform side (xAI, formerly Twitter, and Criteo) and the agency side (Universal Media). Select one to see it in my resume below.</p>
     <div class="actions">
       <a class="btn btn-primary" href="Elias_Elkoussa_Resume.pdf" download="Elias_Elkoussa_Resume.pdf"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M3 13.5h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Download resume (PDF)</a>
+      <a class="btn btn-ghost" href="#schedule" data-track="schedule">Schedule a 30-minute call</a>
       <a class="btn btn-ghost" href="#contact">Request contact details</a>
     </div>
   </header>
@@ -273,6 +278,15 @@ footer b{color:var(--ink)}
       <h2 id="h-lang">Languages</h2>
       <div class="rbody">
         <p>English: professional (read and write) · Arabic: native (read and write)</p>
+      </div>
+    </section>
+
+    <section class="rsec schedule-sec" id="schedule" aria-labelledby="h-schedule">
+      <h2 id="h-schedule">Schedule a call</h2>
+      <div class="rbody">
+        <p>Pick a time for a 30-minute Google Meet call, Monday to Friday.</p>
+        <iframe class="booking" src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2PQbWma_vi5fAYv_asp29CbzRYKEcaxEas3fdued5m7sAisbVsjdXMzUCTKdUz96tYS-F1qGjo?gv=true" title="Book a 30-minute call with Elias Elkoussa" loading="lazy"></iframe>
+        <p class="booking-alt">If the calendar doesn't load, <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2PQbWma_vi5fAYv_asp29CbzRYKEcaxEas3fdued5m7sAisbVsjdXMzUCTKdUz96tYS-F1qGjo" target="_blank" rel="noopener" data-track="schedule">open the booking page in a new tab</a>.</p>
       </div>
     </section>
 
@@ -470,6 +484,14 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
   document.querySelectorAll('a[href$="Elias_Elkoussa_Resume.pdf"]').forEach(function (a) {
     a.addEventListener('click', function () {
       if (window.lintrk) window.lintrk('track', { conversion_id: 31972465 });
+    });
+  });
+
+  // LinkedIn conversion: "Schedule a call" clicks (top button and the new-tab booking link)
+  var SCHEDULE_CONVERSION_ID = '32063601';
+  document.querySelectorAll('a[data-track="schedule"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (window.lintrk && /^[0-9]+$/.test(SCHEDULE_CONVERSION_ID)) window.lintrk('track', { conversion_id: Number(SCHEDULE_CONVERSION_ID) });
     });
   });
 </script>
